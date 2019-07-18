@@ -46,6 +46,7 @@ controller.edit = (req, res) => {
   });
 };
 
+
 controller.update = (req, res) => {
   const { id } = req.params;
   const newPoints = req.body;

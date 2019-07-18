@@ -1,0 +1,83 @@
+
+
+
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <form action="/admin/addparcours/<%= data.id %>" method="POST"></form>
+		  <div class="form-group">
+          <input type="text" name="nom" value="<%= data.nom%>" placeholder="Nom" class="form-control" autofocus required>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="difficulte" value="<%= data.difficulte%>" placeholder="Difficulté" class="form-control">
+        </div>
+
+         <div class="form-group">
+          <input type="text" name="categorie" value="<%= data.categorie%>" placeholder="Catégorie" class="form-control" autofocus required>
+        </div>
+          <div class="form-group">
+            <input type="text" name="ref" value="<%= data.ref%>" placeholder="Réf" class="form-control" autofocus required>
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="parcours" value="<%= data.parcours%>" placeholder="Parcours" class="form-control">
+          </div>
+
+		  <div class="form-group">
+            <input type="text" name="point" value="<%= data.point%>" placeholder="Point" class="form-control" autofocus required>
+          </div>
+
+		  <div class="form-group">
+            <input type="text" name="pause" value="<%= data.pause%>" placeholder="Pause" class="form-control" autofocus required>
+          </div>
+
+		  <div class="form-group">
+            <input type="time" name="duree" value="<%= data.duree%>" placeholder="Durée" class="form-control" autofocus required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-rounded">
+              Valider le parcours
+            </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+  <div class="card-body">
+    <div class="card-title">POINTS</div>
+<% if (messages.error) { %>
+<p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+<p style="color:green"><%- messages.success %></p>
+<% } %>
+    <form action="parcours/add" method="POST">
+
+      <div class="form-group">
+          <input type="text" name="longitude" placeholder="Longitude" class="form-control" autofocus required>
+        </div>
+        <div class="form-group">
+          <input type="text" name="latitude" placeholder="Latitude" class="form-control">
+        </div>
+     
+      <button type="submit" class="btn btn-primary btn-rounded">
+        Ajouter un point
+      </button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+<% include partials/_footer %>
+
