@@ -8,9 +8,7 @@
           <tr>
             <td>n°</td>
             <td>Nom</td>
-            <td>desc</td>
-            <td>num serie</td>
-            <td>prix</td>
+			<td>Actions</td>
           </tr>
         </thead>
         <tbody>
@@ -19,13 +17,9 @@
               <tr>
                 <td><%= (i + 1) %></td>
                 <td><%= data[i].nom %></td>
-                <td><%= data[i].description %></td>
-                <td><%= data[i].numSerie %></td>
-                <td><%= data[i].prix %></td>
-			
                 <td>
-                  <a href="location/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
-                  <a href="location/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
+                  <a href="role/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
+                  <a href="role/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
                 </td>
               </tr>
             <% } %>
@@ -43,19 +37,11 @@
 		<p style="color:green"><%- messages.success %></p>
   <% } %>
   
-        <form action="location/add" method="POST">
+        <form action="role/add" method="POST">
           <div class="form-group">
             <input type="text" name="nom" placeholder="Nom" class="form-control" autofocus required>
           </div>
-		  <div class="form-group">
-            <input type="text" name="description" placeholder="description" class="form-control">
-          </div>
-           <div class="form-group">
-            <input type="text" name="numSerie" placeholder="Numéro de série" class="form-control">
-          </div>
-           <div class="form-group">
-            <input type="number" name="prix" placeholder="Prix location" class="form-control">
-          </div>
+ 
          
 
           <button type="submit" class="btn btn-primary btn-rounded">

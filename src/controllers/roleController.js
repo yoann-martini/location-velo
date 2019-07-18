@@ -2,37 +2,36 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM locations', (err, locations) => {
+    conn.query("SELECT * FROM roles", (err, role) => {
       if (err) {
         res.json(err);
       }
-      res.render("locations", {
-        data: locations
+      res.render("roles", {
+        data: role
       });
     });
   });
 };
 
 controller.save = (req, res) => {
-  const data = req.body;
+  const data = req.body;   
   console.log(req.body);
 
   req.check("nom").isLength({ min: 3 });
-  req.check("description");
   const errors = req.validationErrors();
   if (errors) {
     console.log(errors);
     req.flash("error", "Erreur");
-    res.redirect("/admin/location");
+    res.redirect("/admin/role");
   } else {
     req.getConnection((err, connection) => {
       const query = connection.query(
-        "INSERT INTO locations set ?",
+        "INSERT INTO roles set ?",
         data,
-        (err, locations) => {
-          console.log(locations);
+          (err, role) => {
+          console.log(role);
           req.flash("success", "Validé");
-          res.redirect("/admin/location");
+          res.redirect("/admin/role");
         }
       );
     });
@@ -42,8 +41,8 @@ controller.save = (req, res) => {
 controller.edit = (req, res) => {
   const { id } = req.params;
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM locations WHERE id = ?", [id], (err, rows) => {
-      res.render("locations_edit", {
+    conn.query("SELECT * FROM roles WHERE id = ?", [id], (err, rows) => {
+      res.render("roles_edit", {
         data: rows[0]
       });
     });
@@ -52,10 +51,9 @@ controller.edit = (req, res) => {
 
 controller.update = (req, res) => {
   const { id } = req.params;
-  const newlocations = req.body;
+  const newRoles = req.body;
 
   req.check("nom").isLength({ min: 3 });
-  req.check("description").isLength({ min: 3 });
   const errors = req.validationErrors();
   if (errors) {
     console.log(errors);
@@ -63,11 +61,11 @@ controller.update = (req, res) => {
   } else {
     req.getConnection((err, conn) => {
       conn.query(
-        "UPDATE locations set ? where id = ?",
-        [newlocations, id],
-        (err, rows) => {
-          req.flash("success", "Validé");
-          res.redirect("/admin/location");
+        "UPDATE roles set ? where id = ?",
+        [newRoles, id],
+        (err, rows) =>  {
+          req.flash("success", "Validé"); 
+          res.redirect("/admin/role");
         }
       );
     });
@@ -78,10 +76,10 @@ controller.delete = (req, res) => {
   const { id } = req.params;
   req.getConnection((err, connection) => {
     connection.query(
-      "DELETE FROM locations WHERE id = ?",
+      "DELETE FROM roles WHERE id = ?",
       [id],
       (err, rows) => {
-        res.redirect("/admin/location");
+        res.redirect("/admin/role");
       }
     );
   });

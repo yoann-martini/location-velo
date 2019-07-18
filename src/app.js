@@ -34,6 +34,7 @@ const typeRoutes = require('./routes/type');
 const locationRoutes = require('./routes/location');
 const parcoursRoutes = require('./routes/parcours');
 const pointsRoutes = require('./routes/points');
+const roleRoutes = require('./routes/role');
 
 
 // settings
@@ -57,7 +58,8 @@ app.use(expressValidator());
 app.use(flash());
 
 // routes
-app.use('/', utilisateurRoutes);
+app.use('/admin/user', utilisateurRoutes);
+app.use('/admin/role', roleRoutes);
 app.use('/admin/type', typeRoutes);
 app.use('/admin/location', locationRoutes);
 app.use('/admin/parcours', parcoursRoutes);
