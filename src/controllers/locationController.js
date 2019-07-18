@@ -2,12 +2,13 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM locations', (err, locations) => {
+    conn.query("SELECT * FROM locations; SELECT * FROM types", (err, locations) => {
       if (err) {
         res.json(err);
       }
       res.render("locations", {
-        data: locations
+        data: locations,
+        dataType: types
       });
     });
   });

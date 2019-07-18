@@ -2,12 +2,13 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-      conn.query('SELECT * FROM utilisateurs', (err, utilisateurs) => {
+      conn.query('SELECT u.*, r.nom nom_role FROM utilisateurs u INNER JOIN roles r ON u.roleId = r.id', (err, utilisateurs, roles) => {
      if (err) {
       res.json(err);
      }
           res.render('utilisateurs', {
-              data: utilisateurs
+              data: utilisateurs,
+              tada: roles
      });
     });
   });
