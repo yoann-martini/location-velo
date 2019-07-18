@@ -1,0 +1,32 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <form action="/update/<%= data.id %>" method="POST">
+		  
+        <form action="/add" method="POST">
+          <div class="form-group">
+            <input type="text" name="nom" value="<%= data.nom %>" placeholder="Nom" class="form-control" autofocus required>
+          </div>
+		  <div class="form-group">
+            <input type="text" name="description" value="<%= data.description%>" placeholder="description" class="form-control">
+          </div>
+           <div class="form-group">
+            <input type="number" name="description" value="<%= data.numSerie%>" placeholder="description" class="form-control">
+          </div>
+           <div class="form-group">
+            <input type="number" name="prix" value="<%= data.prix%>" placeholder="prix" class="form-control">(en €)
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
