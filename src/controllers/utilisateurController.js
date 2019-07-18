@@ -18,14 +18,16 @@ controller.save = (req, res) => {
   console.log(req.body)
   
     req.check('nom').not().isEmpty().withMessage('Nom');
-    req.check('prenom').isLength({ min: 3 });
-    req.check('adresse').isLength({ min: 3 });
-    req.check('codePostal').isLength({ min: 3 });
-    req.check('genre').isLength({ min: 3 });
-    req.check('numCarteIdentite').isLength({ min: 3 });
-    req.check('numPermisConduire').isLength({ min: 3 });
+    req.check('prenom');
+    req.check('adresse');
+    req.check('codePostal');
+    req.check('genre');
+    req.check('telephone');
+    req.check('numCarteIdentite');
+    req.check('numPermisConduire');
+    req.check('role');
     req.check('email').isEmail();
-    req.check('mdp').isLength({ min: 3 });
+    req.check('mdp');
   const errors = req.validationErrors();
   if (errors) {
 	console.log(errors);
@@ -58,14 +60,15 @@ controller.update = (req, res) => {
   const newUtilisateurs = req.body;
   
     req.check('nom').not().isEmpty().withMessage('Nom');
-    req.check('prenom').isLength({ min: 3 });
-    req.check('adresse').isLength({ min: 3 });
-    req.check('codePostal').isLength({ min: 3 });
-    req.check('genre').isLength({ min: 3 });
-    req.check('numCarteIdentite').isLength({ min: 3 });
-    req.check('numPermisConduire').isLength({ min: 3 });
+    req.check('prenom');
+    req.check('adresse');
+    req.check('codePostal');
+    req.check('genre').isLength({ min: 1 });
+    req.check('telephone');
+    req.check('numCarteIdentite');
+    req.check('numPermisConduire');
     req.check('email').isEmail();
-    req.check('mdp').isLength({ min: 3 });
+    req.check('mdp');
   const errors = req.validationErrors();
   if (errors) {
 	console.log(errors);

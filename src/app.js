@@ -30,7 +30,11 @@ app.use(session({
 
 // importing routes
 const utilisateurRoutes = require('./routes/utilisateur');
+
+const typeRoutes = require('./routes/type');
+const locationRoutes = require('./routes/location');
 const parcoursRoutes = require('./routes/parcours');
+
 
 // settings
 app.set('port', process.env.PORT || 3000);
@@ -54,7 +58,10 @@ app.use(flash());
 
 // routes
 app.use('/', utilisateurRoutes);
+app.use('/admin/type', typeRoutes);
+app.use('/admin/location', locationRoutes);
 app.use('/admin/parcours', parcoursRoutes);
+
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
