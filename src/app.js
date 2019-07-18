@@ -30,10 +30,10 @@ app.use(session({
 
 // importing routes
 const utilisateurRoutes = require('./routes/utilisateur');
-
 const typeRoutes = require('./routes/type');
 const locationRoutes = require('./routes/location');
 const parcoursRoutes = require('./routes/parcours');
+const pointsRoutes = require('./routes/points');
 
 
 // settings
@@ -61,6 +61,7 @@ app.use('/', utilisateurRoutes);
 app.use('/admin/type', typeRoutes);
 app.use('/admin/location', locationRoutes);
 app.use('/admin/parcours', parcoursRoutes);
+app.use('/admin/points', pointsRoutes);
 
 
 // static files
