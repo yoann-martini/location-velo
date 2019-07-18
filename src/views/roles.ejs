@@ -1,0 +1,58 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Nom</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nom %></td>
+                <td>
+                  <a href="role/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
+                  <a href="role/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <div class="card-body">
+		<% if (messages.error) { %>
+	  <p style="color:red"><%- messages.error %></p>
+	<% } %>
+	  
+	<% if (messages.success) { %>
+		<p style="color:green"><%- messages.success %></p>
+  <% } %>
+  
+        <form action="role/add" method="POST">
+          <div class="form-group">
+            <input type="text" name="nom" placeholder="Nom" class="form-control" autofocus required>
+          </div>
+		  <div class="form-group">
+            <input type="text" name="description" placeholder="description" class="form-control">
+          </div>
+ 
+         
+
+          <button type="submit" class="btn btn-primary btn-rounded">
+            Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
