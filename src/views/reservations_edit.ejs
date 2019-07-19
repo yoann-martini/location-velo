@@ -5,14 +5,17 @@
     <div class="col-md-5 offset-md-3 card">
       <div class="card-body">
         <form action="/admin/reservation/update/<%= data.id %>" method="POST">
-		  <div class="form-group">
-            <input type="text" name="locataire" value="<%= data.locataire%>" placeholder="Locataire" class="form-control" autofocus required>
+          <div class="form-group">
+            <input type="text" name="locataire" value="<%= data.locataire%>" placeholder="Locataire"
+              class="form-control" autofocus required>
           </div>
           <div class="form-group">
-            <input type="text" name="vehiculeLoue" value="<%= data.vehiculeLoue%>" placeholder="Véhicule Loué" class="form-control">
+            <input type="text" name="vehiculeLoue" value="<%= data.vehiculeLoue%>" placeholder="Véhicule Loué"
+              class="form-control">
           </div>
-		  <div class="form-group">
-            <input type="text" name="dateDebut" value="<%= data.dateDebut%>" placeholder="Date de Début" class="form-control" autofocus required>
+          <div class="form-group">
+            <input type="text" name="dateDebut" value="<%= data.dateDebut%>" placeholder="Date de Début"
+              class="form-control" autofocus required>
           </div>
           <div class="form-group">
             <input type="text" name="dateFin" value="<%= data.dateFin%>" placeholder="Date de Fin" class="form-control">
@@ -20,11 +23,13 @@
           <div class="form-group">
             <input type="text" name="caution" value="<%= data.caution%>" placeholder="Caution" class="form-control">
           </div>
-		  <div class="form-group">
-            <input type="text" name="prixTotal" value="<%= data.prixTotal%>" placeholder="Prix Total" class="form-control" autofocus required>
+          <div class="form-group">
+            <input type="text" name="prixTotal" value="<%= data.prixTotal%>" placeholder="Prix Total"
+              class="form-control" autofocus required>
           </div>
           <div class="form-group">
-            <input type="text" name="dateRendu" value="<%= data.dateRendu%>" placeholder="Date Rendu" class="form-control">
+            <input type="text" name="dateRendu" value="<%= data.dateRendu%>" placeholder="Date Rendu"
+              class="form-control">
           </div>
 
           <button type="submit" class="btn btn-primary">

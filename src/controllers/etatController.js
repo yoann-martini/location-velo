@@ -14,10 +14,12 @@ controller.list = (req, res) => {
 };
 
 controller.save = (req, res) => {
-  const data = req.body;   
+  const data = req.body;
   console.log(req.body);
 
-  req.check("nom").isLength({ min: 3 });
+  req.check("nom").isLength({
+    min: 3
+  });
   req.check("description");
   const errors = req.validationErrors();
   if (errors) {
@@ -40,7 +42,9 @@ controller.save = (req, res) => {
 };
 
 controller.edit = (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM etats WHERE id = ?", [id], (err, rows) => {
       res.render("etats_edit", {
@@ -51,11 +55,17 @@ controller.edit = (req, res) => {
 };
 
 controller.update = (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   const newetats = req.body;
 
-  req.check("nom").isLength({ min: 3 });
-  req.check("description").isLength({ min: 3 });
+  req.check("nom").isLength({
+    min: 3
+  });
+  req.check("description").isLength({
+    min: 3
+  });
   const errors = req.validationErrors();
   if (errors) {
     console.log(errors);
@@ -65,8 +75,8 @@ controller.update = (req, res) => {
       conn.query(
         "UPDATE etats set ? where id = ?",
         [newetats, id],
-        (err, rows) =>  {
-          req.flash("success", "Validé"); 
+        (err, rows) => {
+          req.flash("success", "Validé");
           res.redirect("/admin/etat");
         }
       );
@@ -75,7 +85,9 @@ controller.update = (req, res) => {
 };
 
 controller.delete = (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   req.getConnection((err, connection) => {
     connection.query(
       "DELETE FROM etats WHERE id = ?",

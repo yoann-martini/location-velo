@@ -5,9 +5,10 @@
     <div class="col-md-5 offset-md-3 card">
       <div class="card-body">
         <form method="POST" action="/admin/role/update/<%= data.id %>">
-          
+
           <div class="form-group">
-            <input type="text" name="nom" value="<%= data.nom %>" placeholder="Nom" class="form-control" autofocus required>
+            <input type="text" name="nom" value="<%= data.nom %>" placeholder="Nom" class="form-control" autofocus
+              required>
           </div>
 
           <button type="submit" class="btn btn-primary">

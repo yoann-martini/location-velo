@@ -9,34 +9,34 @@
             <td>n°</td>
             <td>Longitude</td>
             <td>Latitude</td>
-			    </tr>
+          </tr>
         </thead>
         <tbody>
           <% if (data) { %>
-            <% for(var i = 0; i < data.length; i++) { %>
-              <tr>
-                <td><%= (i + 1) %></td>
-                <td><%= data[i].longitude %></td>
-                <td><%= data[i].latitude %></td>
-                <td>
-                  <a href="points/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
-                  <a href="points/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
-                </td>
-              </tr>
-            <% } %>
+          <% for(var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%= (i + 1) %></td>
+            <td><%= data[i].longitude %></td>
+            <td><%= data[i].latitude %></td>
+            <td>
+              <a href="points/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
+              <a href="points/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
+            </td>
+          </tr>
+          <% } %>
           <% } %>
         </tbody>
       </table>
     </div>
     <div class="col-md-3">
       <div class="card-body">
-		<% if (messages.error) { %>
-	  <p style="color:red"><%- messages.error %></p>
-	<% } %>
-	  
-	<% if (messages.success) { %>
-		<p style="color:green"><%- messages.success %></p>
-	<% } %>
+        <% if (messages.error) { %>
+        <p style="color:red"><%- messages.error %></p>
+        <% } %>
+
+        <% if (messages.success) { %>
+        <p style="color:green"><%- messages.success %></p>
+        <% } %>
         <form action="/admin/points/add" method="POST">
           <div class="form-group">
             <input type="text" name="longitude" placeholder="Longitude" class="form-control" autofocus required>
@@ -44,8 +44,8 @@
           <div class="form-group">
             <input type="text" name="latitude" placeholder="Latitude" class="form-control">
           </div>
-		
-         
+
+
           <button type="submit" class="btn btn-primary btn-rounded">
             Enregistrer
           </button>
