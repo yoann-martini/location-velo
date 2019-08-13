@@ -1,8 +1,8 @@
 
 CREATE TABLE points (
                 id INT AUTO_INCREMENT NOT NULL,
-                longitude FLOAT NOT NULL,
-                latitude FLOAT NOT NULL,
+                longitude DOUBLE NOT NULL,
+                latitude DOUBLE NOT NULL,
                 PRIMARY KEY (id)
 );
 
@@ -12,6 +12,7 @@ CREATE TABLE parcours (
                 nom VARCHAR(30) NOT NULL,
                 difficulte INT NOT NULL,
                 categorie VARCHAR(30) NOT NULL,
+                duree TIME,
                 PRIMARY KEY (id)
 );
 
@@ -20,9 +21,8 @@ CREATE TABLE parcours_points (
                 id INT NOT NULL,
                 ref VARCHAR(30) NOT NULL,
                 parcours INT NOT NULL,
-                point INT NOT NULL,
+                point_id INT NOT NULL,
                 pause BOOLEAN,
-                duree TIME,
                 PRIMARY KEY (id)
 );
 
@@ -37,6 +37,7 @@ CREATE TABLE types (
 
 CREATE TABLE etats (
                 id INT AUTO_INCREMENT NOT NULL,
+                type_id INT NOT NULL,
                 roues VARCHAR(255),
                 freins VARCHAR(255),
                 cadre VARCHAR(255),
@@ -50,8 +51,8 @@ CREATE TABLE etats (
 
 CREATE TABLE locations (
                 id INT NOT NULL,
-                typeId INT NOT NULL,
-                etatId INT NOT NULL,
+                type_id INT NOT NULL,
+                etat_id INT NOT NULL,
                 nom VARCHAR(30) NOT NULL,
                 description VARCHAR(255) NOT NULL,
                 numSerie VARCHAR(30) NOT NULL,
@@ -73,10 +74,10 @@ CREATE TABLE utilisateurs (
                 prenom VARCHAR(30) NOT NULL,
                 adresse VARCHAR(255) NOT NULL,
                 codePostal INT NOT NULL,
-                genre VARCHAR(30) NOT NULL,
+                genre ENUM('Homme', 'Femme', 'Autre'),
                 numCarteIdentite VARCHAR(255) NOT NULL,
                 numPermisConduire VARCHAR(255) NOT NULL,
-                roleId INT NOT NULL,
+                role_id INT NOT NULL,
                 email VARCHAR(255) NOT NULL,
                 mdp VARCHAR(255) NOT NULL,
                 PRIMARY KEY (id)
@@ -85,8 +86,8 @@ CREATE TABLE utilisateurs (
 
 CREATE TABLE reservations (
                 id INT AUTO_INCREMENT NOT NULL,
-                locataire INT NOT NULL,
-                vehiculeLoue INT NOT NULL,
+                utilisateur_id INT NOT NULL,
+                type_id INT NOT NULL,
                 dateDebut DATETIME NOT NULL,
                 dateFin DATETIME NOT NULL,
                 caution BOOLEAN NOT NULL,
@@ -97,7 +98,7 @@ CREATE TABLE reservations (
 
 
 ALTER TABLE parcours_points ADD CONSTRAINT points_parcours_points_fk
-FOREIGN KEY (point)
+FOREIGN KEY (point_id)
 REFERENCES points (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
@@ -109,31 +110,31 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 ALTER TABLE locations ADD CONSTRAINT types_vehicules_fk
-FOREIGN KEY (typeId)
+FOREIGN KEY (type_id)
 REFERENCES types (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 ALTER TABLE locations ADD CONSTRAINT etats_vehicules_fk
-FOREIGN KEY (etatId)
+FOREIGN KEY (etat_id)
 REFERENCES etats (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 ALTER TABLE reservations ADD CONSTRAINT vehicules_reservations_fk
-FOREIGN KEY (vehiculeLoue)
+FOREIGN KEY (type_id)
 REFERENCES locations (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 ALTER TABLE utilisateurs ADD CONSTRAINT roles_utilisateurs_fk
-FOREIGN KEY (roleId)
+FOREIGN KEY (role_id)
 REFERENCES roles (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 ALTER TABLE reservations ADD CONSTRAINT utilisateurs_reservations_fk
-FOREIGN KEY (locataire)
+FOREIGN KEY (utilisateur_id)
 REFERENCES utilisateurs (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
