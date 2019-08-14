@@ -55,6 +55,7 @@ controller.edit = (req, res) => {
 };
 
 controller.update = (req, res) => {
+  console.log("truc");
   const {
     id
   } = req.params;

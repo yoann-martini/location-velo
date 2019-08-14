@@ -6,7 +6,14 @@
       <div class="card-body">
         <form action="/admin/location/update/<%= data.id %>" method="POST">
 
-          <form action="/add" method="POST">
+            <div class="form-group">
+              <input type="number" name="typeId" value="<%= data.typeId %>" placeholder="Type" class="form-control"
+                autofocus required>
+            </div>
+            <div class="form-group">
+              <input type="number" name="etatId" value="<%= data.etatId %>" placeholder="Etat" class="form-control"
+                autofocus required>
+            </div>
             <div class="form-group">
               <input type="text" name="nom" value="<%= data.nom %>" placeholder="Nom" class="form-control" autofocus
                 required>
