@@ -4,14 +4,14 @@
   <div class="row">
     <div class="col-md-5 offset-md-3 card">
       <div class="card-body">
-        <form action="/admin/location/update/<%= data.id %>" method="POST">
+        <form action="/admin/locations/update/<%= data.id %>" method="POST">
 
             <div class="form-group">
-              <input type="number" name="typeId" value="<%= data.typeId %>" placeholder="Type" class="form-control"
+              <input type="number" name="type_id" value="<%= data.type_id %>" placeholder="Type" class="form-control"
                 autofocus required>
             </div>
             <div class="form-group">
-              <input type="number" name="etatId" value="<%= data.etatId %>" placeholder="Etat" class="form-control"
+              <input type="number" name="etat_id" value="<%= data.etat_id %>" placeholder="Etat" class="form-control"
                 autofocus required>
             </div>
             <div class="form-group">

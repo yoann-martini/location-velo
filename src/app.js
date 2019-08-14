@@ -66,7 +66,7 @@ app.use('/admin/role', roleRoutes);
 app.use('/admin/reservation', reservationRoutes);
 app.use('/admin/type', typeRoutes);
 app.use('/admin/etat', etatRoutes);
-app.use('/admin/location', locationRoutes);
+app.use('/admin/locations', locationRoutes);
 app.use('/admin/parcours', parcoursRoutes);
 app.use('/admin/points', pointsRoutes);
 

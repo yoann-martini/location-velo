@@ -21,16 +21,16 @@
           <% for(var i = 0; i < data.length; i++) { %>
           <tr>
             <td><%= (i + 1) %></td>
-            <td><%= data[i].typeId %></td>
-            <td><%= data[i].etatId %></td>
+            <td><%= data[i].type_id %></td>
+            <td><%= data[i].etat_id %></td>
             <td><%= data[i].nom %></td>
             <td><%= data[i].description %></td>
             <td><%= data[i].numSerie %></td>
             <td><%= data[i].prix %></td>
 
             <td>
-              <a href="location/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
-              <a href="location/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
+              <a href="locations/update/<%= data[i].id %>" class="btn btn-info">Modifier</a>
+              <a href="locations/delete/<%= data[i].id %>" class="btn btn-danger">Supprimer</a>
             </td>
           </tr>
           <% } %>
@@ -48,12 +48,12 @@
         <p style="color:green"><%- messages.success %></p>
         <% } %>
 
-        <form action="location/add/<%= data.id %>" method="POST">
+        <form action="locations/add/<%= data.id %>" method="POST">
           <div class="form-group">
-            <input type="number" name="typeId" placeholder="Id du type" class="form-control">
+            <input type="number" name="type_id" placeholder="Id du type" class="form-control">
           </div>
           <div class="form-group">
-            <input type="number" name="etatId" placeholder="iD de l'état" class="form-control">
+            <input type="number" name="etat_id" placeholder="iD de l'état" class="form-control">
           </div>
           <div class="form-group">
             <input type="text" name="nom" placeholder="Nom" class="form-control" autofocus required>
