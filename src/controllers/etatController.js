@@ -2,7 +2,8 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM etats", (err, etats) => {
+    conn.query("select etats.id, type_id, roues, freins, cadre, etatMecanique, selle, batterie, etats.description, types.nom, types.description from location_velo.etats inner join types on etats.type_id = types.id",
+     (err, etats) => {
       if (err) {
         res.json(err);
       }
@@ -17,10 +18,6 @@ controller.save = (req, res) => {
   const data = req.body;
   console.log(req.body);
 
-  req.check("nom").isLength({
-    min: 3
-  });
-  req.check("description");
   const errors = req.validationErrors();
   if (errors) {
     console.log(errors);
@@ -60,12 +57,6 @@ controller.update = (req, res) => {
   } = req.params;
   const newetats = req.body;
 
-  req.check("nom").isLength({
-    min: 3
-  });
-  req.check("description").isLength({
-    min: 3
-  });
   const errors = req.validationErrors();
   if (errors) {
     console.log(errors);
@@ -82,7 +73,7 @@ controller.update = (req, res) => {
       );
     });
   }
-};
+};  
 
 controller.delete = (req, res) => {
   const {

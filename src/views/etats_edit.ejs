@@ -1,0 +1,48 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <form action="/admin/etat/update/<%= data.id %>" method="POST">
+
+        <div class="form-group">
+            <input type="number" name="type_id" value="<%= data.type_id %>"" placeholder="Type véhicule" class="form-control">
+          </div>
+          <div class="form-group">
+            <input etat="text" name="roues" value="<%= data.roues %>" placeholder="Roues" class="form-control" autofocus required>
+          </div>
+          <div class="form-group">
+            <input etat="text" name="freins" value="<%= data.freins %>" placeholder="Freins" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <input etat="text" name="cadre" value="<%= data.cadre %>" placeholder="Cadre" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <input etat="text" name="etatMecanique" value="<%= data.etatMecanique %>" placeholder="Etat mecanique" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <input etat="text" name="selle" value="<%= data.selle %>" placeholder="Selle" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <input etat="text" name="batterie" value="<%= data.batterie %>" placeholder="Batterie" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <input etat="text" name="description" value="<%= data.description %>" placeholder="description" class="form-control">
+          </div>
+
+            <button type="submit" class="btn btn-primary">
+              Enregistrer
+            </button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
