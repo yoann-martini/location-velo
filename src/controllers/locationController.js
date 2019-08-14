@@ -2,7 +2,8 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM locations', (err, locations) => {
+    conn.query('select types.id as type_id, etats.id as etat_id, types.nom, types.description, numSerie, prix from locations inner join types on locations.type_id = types.id inner join etats on locations.etat_id = etats.id',
+    (err, locations) => {
       if (err) {
         res.json(err);
       }
