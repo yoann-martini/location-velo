@@ -40,7 +40,9 @@ Pour amorcer le projet pour nous. Cela nous aidera également à générer des m
 Sequelize est un ORM de dialecte multi-SQL facile à utiliser pour Node.js.
 Nous allons utiliser MySQL comme base de données. Laissons installer Sequelize ORM et le dialecte mysql2.
 > npm install --save sequelize
+
 > npm install --save mysql2
+
 > npm install --save -g mysql
 
 Après l’installation, laissez l’interface CLI générer des migrations, des sources, des répertoires config et models et un fichier config.
