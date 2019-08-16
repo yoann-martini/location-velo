@@ -53,6 +53,8 @@ Génération de modèle
 
 > sequelize-auto -o "./models" -d sequelize_auto_test -h localhost -u my_username -p 5432 -x my_password -e postgres
 
+> Creating Controllers and Routing --> https://medium.com/@prajramesh93/getting-started-with-node-express-and-mysql-using-sequelize-ed1225afc3e0
+
 ### Site côté admin
 
 #### Gestion des rôles
