@@ -8,7 +8,7 @@ CREATE TABLE points (
 
 
 CREATE TABLE parcours (
-                id INT NOT NULL,
+                id INT AUTO_INCREMENT NOT NULL,
                 nom VARCHAR(30) NOT NULL,
                 difficulte INT NOT NULL,
                 categorie VARCHAR(30) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE parcours (
 
 
 CREATE TABLE parcours_points (
-                id INT NOT NULL,
+                id INT AUTO_INCREMENT NOT NULL,
                 ref VARCHAR(30) NOT NULL,
                 parcours INT NOT NULL,
                 point_id INT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE etats (
 
 
 CREATE TABLE locations (
-                id INT NOT NULL,
+                id INT AUTO_INCREMENT NOT NULL,
                 type_id INT NOT NULL,
                 etat_id INT NOT NULL,
                 nom VARCHAR(30) NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE roles (
 
 
 CREATE TABLE utilisateurs (
-                id INT NOT NULL,
+                id INT AUTO_INCREMENT NOT NULL,
                 nom VARCHAR(30) NOT NULL,
                 prenom VARCHAR(30) NOT NULL,
                 adresse VARCHAR(255) NOT NULL,
