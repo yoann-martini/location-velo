@@ -12,7 +12,7 @@ controller.list = (req, res) => {
       });
     });
   });
-};
+}; /* OK */
 
 controller.save = (req, res) => {
   const data = req.body;
@@ -40,7 +40,7 @@ controller.save = (req, res) => {
       );
     });
   }
-};
+}; /* OK */
 
 controller.edit = (req, res) => {
   const {
@@ -56,25 +56,47 @@ controller.edit = (req, res) => {
 };
 
 
+
 controller.update = (req, res) => {
+  const {
+    id
+  } = req.params;
+  const newLocations = req.body;
 
+  const errors = req.validationErrors();
+  if (errors) {
+    console.log(errors);
+    req.flash("error", "Erreur");
+  } else {
+    req.getConnection((err, conn) => {
+      conn.query(
+        "UPDATE locations set ? where id = ?",
+        [newLocations, id],
+        (err, rows) => {
+          req.flash("success", "Validé");
+          res.redirect("/admin/locations");
+        }
+      );
+    });
+  }
+};  
 
-  console.log("truc");
- 
-  const { id } = req.params;
- 
-  const newLocation = req.body;
-
- req.getConnection((err, conn) => {
-
-
-  conn.query('UPDATE locations set ? where id = ?', [newLocation, id], (err, rows) => {
- 
-    res.redirect('/admin/locations');
-  });
+controller.delete = (req, res) => {
+  const {
+    id
+  } = req.params;
+  req.getConnection((err, connection) => {
+    connection.query(
+      "DELETE FROM locations WHERE id = ?",
+      [id],
+      (err, rows) => {
+        res.redirect("/admin/locations");
+      }
+    );
   });
 };
 
+module.exports = controller;
 
 
 
@@ -115,19 +137,3 @@ controller.update = (req, res) => {
   }
 };*/
 
-controller.delete = (req, res) => {
-  const {
-    id
-  } = req.params;
-  req.getConnection((err, connection) => {
-    connection.query(
-      "DELETE FROM locations WHERE id = ?",
-      [id],
-      (err, rows) => {
-        res.redirect("/admin/locations");
-      }
-    );
-  });
-};
-
-module.exports = controller;
