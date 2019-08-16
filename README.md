@@ -49,6 +49,8 @@ Après l’installation, laissez l’interface CLI générer des migrations, des
 > sequelize init // final, Initializes project with sequelize cil
 
 Génération de modèle
+> npm install -g sequelize-auto
+
 > sequelize-auto -o "./models" -d sequelize_auto_test -h localhost -u my_username -p 5432 -x my_password -e postgres
 
 ### Site côté admin
